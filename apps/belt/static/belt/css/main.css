@@ -1,0 +1,14 @@
+* {
+    /* background-color: gray; */
+    /* font-family: Verdana; */
+    font-family: Helvetica;
+}
+
+input{
+    border-radius: 4px;
+}
+
+.footnote{
+    margin-top: 0px;
+    font-size: 10px;
+}

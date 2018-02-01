@@ -4,9 +4,45 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'belt/css/main.css' %}" media="screen" title="no title"  charset="utf-8">
+    <title>Login and Registration</title>
 </head>
 <body>
-    Hello World!
+    <h1>Welcome!</h1>
+
+    <h2>Sign Up</h2>
+    {% if messages %}
+        {% for msg in messages %}
+            {{ msg }}
+        {% endfor %}
+    {% endif %}
+
+    <form action="/sign_up" method="POST">
+        {% csrf_token %}
+        <input type="text" name="name" placeholder="Name:">
+        <div></div>
+        <input type="text" name="alias" placeholder="Alias:">
+        <div></div>
+        <input type="text" name="email" placeholder="Email:">
+        <div></div>
+        <input type="password" name="pw" placeholder="Password:">
+        <div></div>
+        <p class="footnote">*Password should be at least 8 characters</p>
+        <div></div>
+        <input type="password" name="pwc" placeholder="Confirm PW:">
+        <div></div>
+        <input type="submit" value="Register">
+    </form>
+    <hr>
+    <h2>Sign In</h2>
+    <form action="/sign_in" method="POST">
+        {% csrf_token %}
+        <input type="text" name="email" placeholder="Email:">
+        <div></div>
+        <input type="password" name="pw" placeholder="Password:">
+        <div></div>
+        <input type="submit" value="Sign In">
+    </form>
 </body>
 </html>
