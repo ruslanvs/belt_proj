@@ -6,13 +6,17 @@
 
 .header *{
     display: inline-block;
-    
+
 }
 
 input{
     border-radius: 4px;
 }
 
+.message{
+    font-size: 12px;
+    color: red;
+}
 .footnote{
     margin-top: 0px;
     font-size: 10px;
