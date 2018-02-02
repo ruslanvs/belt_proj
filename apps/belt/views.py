@@ -29,7 +29,10 @@ def sign_up( request ):
     if "sess_u_id" not in request.session: #IF LOGGED IN ALREADY, THEN GOES TO HOME PAGE
         errors = User.objects.validator_signup( request.POST )
         if errors:
-            messages.error( request, errors )
+            for e in errors:
+                messages.error( request, errors[e] )
+                # print '*'*25, "KEYS IN ERRORS:", error
+                # print '*'*25, "VALUES IN ERRORS:", errors[error]
             return redirect( "/" )
         else:
             request.session['sess_u_id'] = User.objects.get( email = request.POST['email'] ).id
