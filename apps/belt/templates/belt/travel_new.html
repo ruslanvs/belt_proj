@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'belt/css/main.css' %}" media="screen" title="no title"  charset="utf-8">
+    <title>Add a Trip</title>
+</head>
+<body>
+    <a href="/travels">Home</a>
+    <a href="/sign_out">Sign Out</a>
+    <h1>Add a Trip</h1>
+
+    {% if messages %}
+        {% for msg in messages %}
+            <p class="message">{{ msg }}</p>
+        {% endfor %}
+    {% endif %}
+
+    <form action="/travels/create" method="POST">
+        {% csrf_token %}
+        <input type="text" name="destination" placeholder="Destination">
+        <div></div>
+        <input type="text" name="plan" placeholder="Description">
+        <div></div>
+        <input type="date" name="start_date" placeholder="Destination">
+        <div></div>
+        <input type="date" name="end_date" placeholder="Destination">
+        <div></div>
+        <input type="submit" value="Add">
+    </form>
+
+
+</body>
+</html>

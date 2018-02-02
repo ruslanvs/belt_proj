@@ -5,8 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     {% load static %}
-    <!-- <link rel="stylesheet" href="{% static 'belt/css/main.css' %}" media="screen" title="no title"  charset="utf-8"> -->
-    <link rel="stylesheet" href="{% static 'belt/css/main.css' %}">
+    <link rel="stylesheet" href="{% static 'belt/css/main.css' %}" media="screen" title="no title"  charset="utf-8">
     <title>Login and Registration</title>
 </head>
 <body>
@@ -23,16 +22,8 @@
     <form action="/sign_up" method="POST">
         {% csrf_token %}
         <input type="text" name="name" placeholder="Name:">
-        <!-- {% if messages %}
-            {% for msg in messages %}
-                {% if msg == "name" %}
-                    {{ msg }}
-                {% endif %}
-            {% endfor %}
-        {% endif %} -->
-            
         <div></div>
-        <input type="text" name="alias" placeholder="Alias:">
+        <input type="text" name="username" placeholder="Username:">
         <div></div>
         <input type="text" name="email" placeholder="Email:">
         <div></div>

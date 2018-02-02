@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'belt/css/main.css' %}" media="screen" title="no title"  charset="utf-8">
+    <title>{{ sess_user.username }} Home</title>
+</head>
+<body>
+    <div class="header">
+        <p>Hello, {{ sess_user.username }}!</p>
+        <a href="/sign_out">Sign Out</a>
+    </div>
+    {% if messages %}
+        {% for msg in messages %}
+            <p class="message">{{ msg }}</p>
+        {% endfor %}
+    {% endif %}
+
+    <h1>Your Trip Schedules</h1>
+    {% for i in user_travels %}
+    <hr>
+    Destination
+    <a href="travels/{{ i.id }}/show">{{ i.destination }}</a>
+        {{ i.start_date }}
+        {{ i.end_date }}
+        {{ i.plan }}
+    <a class="action_link" href="travels/{{ i.id }}/leave">leave</a>
+    {% endfor %}
+
+    <h2>Other Users' Travel Plans</h2>
+    {% for i in other_travels %}
+    <hr>
+    Name
+    <a href="travels/{{ i.id }}/show">{{ i.destination }}</a>
+        {{ i.planned_by_user.name }}
+        {{ i.start_date }}
+        {{ i.end_date }}
+        {{ i.plan }}
+    <a class="action_link" href="travels/{{ i.id }}/join">join</a>
+    {% endfor %}
+
+    <p>
+        <a class="action_link" href="/travels/new">Add a Travel Plan</a>
+    </p>
+
+
+</body>
+</html>

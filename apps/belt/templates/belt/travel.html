@@ -6,21 +6,23 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     {% load static %}
     <link rel="stylesheet" href="{% static 'belt/css/main.css' %}" media="screen" title="no title"  charset="utf-8">
-    <title>{{ sess_user.alias }} Home</title>
+    <title>{{ sess_user.username }}</title>
 </head>
 <body>
     <div class="header">
-        <p>Welcome, {{ sess_user.alias }}!</p>
+        <p>Hello, {{ sess_user.username }}!</p>
+        <a href="/travels">Home</a>
         <a href="/sign_out">Sign Out</a>
     </div>
+    {{ travel.destination }}
+    {{ travel.plan }}
+    {{ travel.start_date }}
+    {{ travel.end_date }}
 
-    {% if messages %}
-        {% for msg in messages %}
-            {{ msg.message }}
-        {% endfor %}
-    {% endif %}
+    <h2>Other Users Joining the Trip</h2>
+    {% for i in other_travelers %}
+    <p>{{ i.name }}</p>
+    {% endfor %}
 
-    <h1>TITLE</h1>
-    
 </body>
 </html>
